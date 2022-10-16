@@ -5,8 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoList</title>
+    <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body>
-    
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">ToDoList</h1>
+            <p class="header__subtitle">составь список задач</p>
+            <p class="date">16/10/2022</p>
+        </header>
+        <section class="task">
+            <ul class="task__list">
+                <li class="task__empty">
+                    Список дел пуст
+                </li>
+                <template id="task">
+                    <li class="task__item">
+                        <p class="task__text">Купить молоко</p>
+                        <div class="task__buttons">
+                            <button type="button" class="task__done">y</button>
+                            <button type="button" class="task__delete">x</button>
+                        </div>
+                    </li>
+                </template> 
+                
+            </ul>
+        </section>
+
+        <section class="task">
+            <form action="" class="form-task">
+                <input name="task" required placeholder="Добавь задачу" type="text" class="form-task__input" value=""> 
+                <button type="submit" class="form-task__button">Создать</button>
+            </form>
+        </section>
+
+    </div>
+
+    <script src="./js/index.js"></script>
 </body>
 </html>
