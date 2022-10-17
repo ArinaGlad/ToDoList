@@ -11,5 +11,7 @@
 
 @import url(../blocks/task/__list/task__list.css);
 @import url(../blocks/task/__item/task__item.css);
+@import url(../blocks/task/__text/_done/task__text_done.css);
+@import url(../blocks/task/__empty/_active/task__empty_active.css);
 
 @import url(../blocks/form-task/__input/form-task__input.css);
