@@ -7,6 +7,27 @@ const taskText = document.querySelector('.task__text');
 
 let tasks = [];
 
+if (localStorage.getItem('tasks')) {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    
+    tasks.forEach((item) => {
+    
+        const taskElement = taskTemplate.querySelector('.task__item').cloneNode(true);
+        const taskText = taskElement.querySelector('.task__text');
+        taskText.textContent = item.text;
+        taskElement.id = item.id;
+        if (item.done) {
+            taskText.classList.add('task__text_done');
+        }
+        listTask.prepend(taskElement);
+        
+    });
+}
+
+
+
+addEmptyItem();
+
 function addDoneClass (array) {
     if (array.done) {
         taskText.classList.add('task__text_done');
@@ -26,6 +47,8 @@ function createtask () {
 
     tasks.push(newTask);
 
+    saveToLocalStorage();
+
     taskElement.querySelector('.task__text').textContent = taskInput.value;
     taskElement.id = newTask.id;
 
@@ -34,7 +57,6 @@ function createtask () {
         taskText.classList.add('task__text_done');
     }
     
-
     return taskElement;
 }
 
@@ -43,9 +65,7 @@ function addTask (event) {
     listTask.prepend(createtask(taskInput));
     taskInput.value = '';
     taskInput.focus();
-    if (listTask.children.length > 1) {
-        listTask.querySelector('.task__empty').classList.add('task__empty_active');
-    }
+    addEmptyItem();
 }
 
 formSubmitTask.addEventListener('submit', addTask);
@@ -68,9 +88,9 @@ function deleteTask (event) {
     // удаляем из массива
     tasks.splice(index, 1);
 
-    if (listTask.children.length === 2) {
-        listTask.querySelector('.task__empty').classList.remove('task__empty_active');
-    }
+    saveToLocalStorage();
+
+    addEmptyItem();
 }
 
 listTask.addEventListener('click', deleteTask);
@@ -80,8 +100,35 @@ function doneTask (event) {
     if (!event.target.classList.contains('task__done')) {
         return;
     }
-    event.target.parentElement.previousElementSibling.classList.add('task__text_done');
-    
+    const closestItem = event.target.closest('.task__item');
+    const task = tasks.find((task) => {
+        if (task.id == closestItem.id) {
+            return true;
+        }
+    });
+
+    task.done = !task.done;
+
+    saveToLocalStorage()
+
+    closestItem.querySelector('.task__text').classList.add('task__text_done');
 }
 
 listTask.addEventListener('click', doneTask);
+
+function addEmptyItem() {
+    if (tasks.length === 0) {
+        const emptyItemHTML = `<li class="task__empty">
+                Список дел пуст
+            </li>`;
+        listTask.insertAdjacentHTML('afterbegin', emptyItemHTML);
+    }
+
+    if (tasks.length > 0) {
+        document.querySelector('.task__empty') ? document.querySelector('.task__empty').remove() : null;
+    }
+}
+
+function saveToLocalStorage() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
