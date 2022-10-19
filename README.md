@@ -6,15 +6,8 @@
 **Технологии**
 
 _1._ Flexbox-верстка  
-_2._ Позиционирование элементов  
-_3._ Grid Layout  
-_4._ HTML верстка  
-_5._ Организация файлов по БЭМ Nested  
-_6._ Git, Github  
-_7._ Figma  
-_8._ Медиазапросы  
-_9._ Работа с формами
 
 **Ссылка на проект**
 
-https://arinaglad.github.io/mesto/
+https://arinaglad.github.io/ToDoList/
+
