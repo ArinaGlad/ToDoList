@@ -1,0 +1,13 @@
+.task__delete-button {
+    background: url('../../../images/logo/x.svg') center center/20px 20px no-repeat;
+    border: none;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    transition: 0.5s all;
+    
+}
+
+.task__delete-button:hover {
+    opacity: 0.6;
+}

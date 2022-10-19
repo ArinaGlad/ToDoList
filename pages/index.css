@@ -3,15 +3,24 @@
 
 @import url(../blocks/container/container.css);
 
+@import url(../blocks/page/page.css);
+
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__title/header__title.css);
 @import url(../blocks/header/__subtitle/header__subtitle.css);
 
 @import url(../blocks/date/date.css);
 
+
+
 @import url(../blocks/task/__list/task__list.css);
 @import url(../blocks/task/__item/task__item.css);
+@import url(../blocks/task/__text/task__text.css);
 @import url(../blocks/task/__text/_done/task__text_done.css);
 @import url(../blocks/task/__empty/_active/task__empty_active.css);
+@import url(../blocks/task/__done-button/task__done-button.css);
+@import url(../blocks/task/__delete-button/task__delete-button.css);
 
+@import url(../blocks/form-task/form-task.css);
 @import url(../blocks/form-task/__input/form-task__input.css);
+@import url(../blocks/form-task/__button/form-task__button.css);

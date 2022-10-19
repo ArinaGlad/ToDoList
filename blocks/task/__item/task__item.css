@@ -1,5 +1,11 @@
 .task__item {
-    border: 1px solid black;
+    /* border: 2px solid #EEEEEE; */
     display: flex;
     justify-content: space-between;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 0 20px;
+    background-color: white;
+    align-items: center;
+    box-shadow: 1px 1px 5px 3px rgba(172, 201, 222, 0.5);
 }

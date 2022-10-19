@@ -4,6 +4,8 @@ const buttonAdd = document.querySelector('.form-task__button');
 const listTask = document.querySelector('.task__list');
 const formSubmitTask = document.querySelector('.form-task');
 const taskText = document.querySelector('.task__text');
+const subtitle = document.querySelector('.header__subtitle');
+const today = document.querySelector('.date');
 
 let tasks = [];
 
@@ -24,7 +26,23 @@ if (localStorage.getItem('tasks')) {
     });
 }
 
+subtitle.textContent = `Задач в списке: ${tasks.length}`;
 
+let date = new Date();
+
+let options = {
+  /* era: 'long', */
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  weekday: 'long',
+  /* timezone: 'UTC',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric' */
+};
+
+today.textContent = date.toLocaleString("ru", options);
 
 addEmptyItem();
 
@@ -56,7 +74,7 @@ function createtask () {
     if (newTask.done) {
         taskText.classList.add('task__text_done');
     }
-    
+    subtitle.textContent = `Осталось задач: ${tasks.length}`;
     return taskElement;
 }
 
@@ -72,7 +90,7 @@ formSubmitTask.addEventListener('submit', addTask);
 
 // удаление задачи
 function deleteTask (event) {
-    if(!event.target.classList.contains('task__delete')) {
+    if(!event.target.classList.contains('task__delete-button')) {
         return;
     }
 
@@ -91,13 +109,15 @@ function deleteTask (event) {
     saveToLocalStorage();
 
     addEmptyItem();
+
+    subtitle.textContent = `Осталось задач: ${tasks.length}`;
 }
 
 listTask.addEventListener('click', deleteTask);
 
 // отмечаем выполненной
 function doneTask (event) {
-    if (!event.target.classList.contains('task__done')) {
+    if (!event.target.classList.contains('task__done-button')) {
         return;
     }
     const closestItem = event.target.closest('.task__item');
@@ -109,9 +129,9 @@ function doneTask (event) {
 
     task.done = !task.done;
 
-    saveToLocalStorage()
+    saveToLocalStorage();
 
-    closestItem.querySelector('.task__text').classList.add('task__text_done');
+    closestItem.querySelector('.task__text').classList.toggle('task__text_done');
 }
 
 listTask.addEventListener('click', doneTask);

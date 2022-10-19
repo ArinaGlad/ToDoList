@@ -7,13 +7,19 @@
     <title>ToDoList</title>
     <link rel="stylesheet" href="./pages/index.css">
 </head>
-<body>
+<body class="page">
     <div class="container">
         <header class="header">
             <h1 class="header__title">ToDoList</h1>
-            <p class="header__subtitle">составь список задач</p>
+            <p class="header__subtitle">Осталось выполнить 6 задач</p>
             <p class="date">16/10/2022</p>
         </header>
+        <section class="form">
+            <form action="" class="form-task">
+                <input name="task" required placeholder="Добавь задачу" type="text" class="form-task__input" value=""> 
+                <button type="submit" class="form-task__button">Создать</button>
+            </form>
+        </section>
         <section class="task">
             <ul class="task__list">
                 <!-- <li class="task__empty">
@@ -23,8 +29,8 @@
                     <li class="task__item">
                         <p class="task__text">Купить молоко</p>
                         <div class="task__buttons">
-                            <button type="button" class="task__done">y</button>
-                            <button type="button" class="task__delete">x</button>
+                            <button type="button" class="task__done-button"></button>
+                            <button type="button" class="task__delete-button"></button>
                         </div>
                     </li>
                 </template> 
@@ -32,12 +38,7 @@
             </ul>
         </section>
 
-        <section class="form">
-            <form action="" class="form-task">
-                <input name="task" required placeholder="Добавь задачу" type="text" class="form-task__input" value=""> 
-                <button type="submit" class="form-task__button">Создать</button>
-            </form>
-        </section>
+        
 
     </div>
 
